@@ -1,5 +1,15 @@
 
 var o = document.getElementById('b');
+var href = document.getElementById('href');
+
+addEvent(href,'click',function(e) {
+	alert(1)
+    e.stopPropagation()
+})
+addEvent(document,'click',function(e) {
+	alert(2)
+})
+
 
 function handler1(e) {
 	alert(111)

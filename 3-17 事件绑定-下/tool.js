@@ -21,12 +21,25 @@ function addEvent(obj, type, fn) {
     }
 }
 addEvent.exec = function(e) {
-    var e = event || window.event;
+    var e = addEvent.fixEvent(window.event);
     for(var i in this.events[e.type]){
         this.events[e.type][i].call(this, e);
     }
 }
-
+// 给IE中的event添加preventDefault,和stoppropagation方法
+addEvent.fixEvent = function(e) {
+    e.preventDefault = addEvent.fixEvent.preventDefault;
+    e.stopPropagation = addEvent.fixEvent.stopPropagation;
+    return e;
+}
+// IE添加preventDefault
+addEvent.fixEvent.preventDefault = function () {
+    this.returnValue = false
+}
+// IE添加stoppropagation方法
+addEvent.fixEvent.stopPropagation = function () {
+    this.cancelBubble = true
+}
 // 判断事件中是否有重复的函数，屏蔽掉
 addEvent.equal = function(eve, fn) {
     for(var k = 0;k<eve.length;k++) {
@@ -102,11 +115,11 @@ function getEvent(event) {
     return event || window.event
 }
 // 阻止默认行为
-function preDef(event) {
-    var e = getEvent(event);
-    if(typeof e.preventDefault != 'undefined') {
-        e.preventDefault()
-    } else {
-        e.returnValue = false
-    }
-}
+// function preDef(event) {
+//     var e = getEvent(event);
+//     if(typeof e.preventDefault != 'undefined') {
+//         e.preventDefault()
+//     } else {
+//         e.returnValue = false
+//     }
+// }
