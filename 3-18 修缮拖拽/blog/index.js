@@ -1,6 +1,5 @@
 
 
-
 window.onload = function () {
     var login = $().getId('login');
     var screen = $().getId('screen');

@@ -54,12 +54,13 @@ function removeEvent(obj, type, fn) {
       if(typeof obj.removeEventListener != 'undefined') {
         obj.removeEventListener(type, fn, false)
     } else if (typeof obj.detachEvent != 'undefined') {
-        for(var i = 0;i<obj.events[type].length;i++) {
-            if(obj.events[type][i] == fn) {
-                obj.events[type].splice([i],1)
-            }
-        }
-
+          if(obj.events) {
+              for(var i = 0;i<obj.events[type].length;i++) {
+                  if(obj.events[type][i] == fn) {
+                      obj.events[type].splice([i],1)
+                  }
+              }
+          }
     }
 }
 
@@ -113,4 +114,17 @@ function deleteRule(sheet, index) {
 // 跨浏览器获取event对象
 function getEvent(event) {
     return event || window.event
+}
+
+// 删除左右空格
+function trim(str) {
+    return str.replace('/(^\s*)|(\s*$)/g','');
+}
+
+
+// 阻止页面向下滚动
+function scroll() {
+    window.onscroll = function(e) {
+        document.documentElement.scrollTop = 0;
+    }
 }

@@ -130,6 +130,7 @@ Base.prototype.lock = function() {
         this.elements[i].style.width = getInner().width + 'px';
         this.elements[i].style.height = getInner().height + 'px';
         document.documentElement.style.overflow = 'hidden';
+        addEvent(window, 'scroll', scroll);
     }
     return this
 }
@@ -137,6 +138,7 @@ Base.prototype.unlock = function () {
     for(var i = 0;i<this.elements.length;i++) {
         this.elements[i].style.display = 'none'
         document.documentElement.style.overflow = 'auto';
+        removeEvent(window, 'scroll', scroll)
     }
     return this
 }
@@ -162,19 +164,27 @@ Base.prototype.resize = function (fn) {
 Base.prototype.drag = function () {
     for(var i = 0;i<this.elements.length; i++) {
         addEvent(this.elements[i],'mousedown',function(e) {
-            e.preventDefault()
+            if(trim(this.innerHTML).length == 0) {
+                e.preventDefault();
+            }
             var _this = this;
             var diffX = e.clientX - _this.offsetLeft;
             var diffY = e.clientY - _this.offsetTop;
-            // 当鼠标移除浏览器之外的时候
-            if(typeof _this.setCapture != 'undefined') {
-                _this.setCapture();
+            if(e.target.tagName == 'H2') {
+                addEvent(document,'mousemove',move);
+                addEvent(document,'mouseup',up);
+            } else {
+                removeEvent(document,'mousemove',move);
+                removeEvent(document,'mouseup',up);
             }
-            addEvent(document,'mousemove',move);
-            addEvent(document,'mouseup',up);
+
             function move(e) {
                 var left = e.clientX - diffX;
                 var top = e.clientY - diffY;
+                // 当鼠标移除浏览器之外的时候
+                if(typeof _this.setCapture != 'undefined') {
+                    _this.setCapture();
+                }
                 if (left <= 0){
                     left = 0;
                 } else if (left >= getInner().width - _this.offsetWidth) {
