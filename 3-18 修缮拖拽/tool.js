@@ -114,12 +114,3 @@ function deleteRule(sheet, index) {
 function getEvent(event) {
     return event || window.event
 }
-// 阻止默认行为
-// function preDef(event) {
-//     var e = getEvent(event);
-//     if(typeof e.preventDefault != 'undefined') {
-//         e.preventDefault()
-//     } else {
-//         e.returnValue = false
-//     }
-// }
