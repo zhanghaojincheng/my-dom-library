@@ -26,7 +26,7 @@ window.onload = function () {
         login.hide()
     })
 
-    $().getId('login').drag();
+    login.drag([$().getTagName('h2').getElement(0)]);
 
 
 }
