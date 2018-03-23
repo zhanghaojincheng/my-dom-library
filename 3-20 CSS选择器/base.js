@@ -1,74 +1,80 @@
 // 前台调用
-var $ = function(args) {
-    return new Base(args);
+var $ = function(tags) {
+    return new Base(tags);
 }
 
-function Base(args) {
+function Base(tags) {
     this.elements = [];
-    if(args) {
-        if(typeof args == 'string') {
-            switch (args.charAt(0)) {
+    if(tags) {
+        if(typeof tags == 'object') {
+            if(tags != undefined) {
+                this.elements[0] = tags
+            }
+        } else if (typeof tags == 'string'){
+            switch(tags.charAt(0)){
                 case '#':
-                    this.getId(args.slice(1,args.length));
+                    this.elements.push(this.getId(tags.substring(1)))
                     break;
                 case '.':
-                    this.getClass(args.slice(1,args.length));
+                    this.elements = this.getClass(tags.substring(1))
                     break;
                 default:
-                    this.getTagName(args)
+                    this.elements = this.getTagName(tags)
             }
-        } else {
-            this.elements[0] = args;
         }
     }
 }
 // Base.prototype.elements = [];
 Base.prototype.getId = function (id) {
-    this.elements.push(document.getElementById(id));
+    return document.getElementById(id)
 }
-Base.prototype.getClass = function (className, boxName) {
-    var node = null;
-    if(arguments.length == 2) {
-        node = document.getElementsByClassName(boxName)[0];
-    } else {
-        node = document;
+Base.prototype.getClass = function (className, parentNode) {
+    var temps = [];
+    if(parentNode == undefined) {
+        parentNode = document;
     }
-    var classes = node.getElementsByClassName(className);
+    var classes = parentNode.getElementsByClassName(className);
     for(var i = 0;i<classes.length;i++) {
-        this.elements.push(classes[i]);
+        temps.push(classes[i]);
     }
+    return temps
 }
-Base.prototype.getTagName = function (tagName) {
-    var tags = document.getElementsByTagName(tagName);
+Base.prototype.getTagName = function (tagName,parentNode) {
+    var temps = [];
+    if(parentNode == undefined) {
+        parentNode = document
+    }
+    var tags = parentNode.getElementsByTagName(tagName);
     for(var i = 0;i<tags.length;i++) {
-        this.elements.push(tags[i]);
+        temps.push(tags[i]);
     }
-}
-Base.prototype.find = function (args) {
-    var arr = [];
-    var method = '';
-    switch (args.charAt(0)) {
-        case '#':
-            method = 'getElementById';
-            args = args.slice(1,args.length);
-            break;
-        case '.':
-            method = 'getElementsByClassName';
-            args = args.slice(1,args.length);
-            break;
-        default:
-            method = 'getElementsByTagName';
-    }
-    for(var i = 0;i<this.elements.length;i++) {
-        for(var k = 0;k<this.elements[i][method](args).length;k++) {
-            arr.push(this.elements[i][method](args)[k]);
-        }
-    }
-    this.elements = arr;
-    return this
+    return temps
 }
 Base.prototype.getElement = function (num) {
     return this.elements[num];
+}
+Base.prototype.find = function (str) {
+    var child = [];
+    for(var i = 0;i<this.elements.length;i++) {
+        switch (str.charAt(0)) {
+            case '#':
+                child.push(this.getId(str.substring(1)));
+                break;
+            case '.':
+                var all = this.getClass(str.substring(1),this.elements[i]);
+                for(var k = 0;k<all.length;k++) {
+                    child.push(all[k]);
+                }
+                break;
+            default:
+                var tags = this.getTagName(str,this.elements[i]);
+                for(var k = 0;k<tags.length;k++) {
+                    child.push(tags[k])
+                };
+        }
+    }
+    this.elements = child;
+    return this
 }
 Base.prototype.eq = function (num) {
     var element = this.elements[num];
