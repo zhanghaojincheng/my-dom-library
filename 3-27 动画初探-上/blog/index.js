@@ -6,7 +6,7 @@
 
         var box = $('#box');
         // alert(getStyle(box, 'left'))
-        box.animate('right',500,20);
+        box.animate('left',500,20);
 
 
 
