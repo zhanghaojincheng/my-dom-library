@@ -266,18 +266,29 @@ Base.prototype.resize = function (fn) {
 // 动画
 
 
-Base.prototype.animate = function(attr,value,step) {
+Base.prototype.animate = function(obj) {
     clearInterval(window.timer)
     for(var i = 0;i<this.elements.length;i++) {
         var element = this.elements[i];
+        element.style[obj.attr] = obj.start + 'px';
+        var attr = obj.attr != undefined ? obj.attr : 'left';
+        var start = obj.start != undefined ? obj.start : getStyle(element, attr);
+        var step = obj.step != undefined ? obj.step : 5;
+        var target = obj.alter + start;
+
+        element.style[attr] = start + 'px';
+        if(getStyle(element,attr) > target) {
+            step = -step;
+        }
         timer = setInterval(function() {
-            if(getStyle(element, attr) + step >= value) {
-                element.style[attr] = value + 'px';
-                clearInterval(timer)
-                flag = true
-                return
-            }
             element.style[attr] = getStyle(element, attr) + step + 'px';
+            if(step < 0 && getStyle(element, attr) <= target) {
+                element.style[attr] = target + 'px';
+                clearInterval(timer)
+            } else if(step > 0 && getStyle(element, attr) >= target){
+                element.style[attr] = target + 'px';
+                clearInterval(timer)
+            }
             console.log(getStyle(element, attr))
         },50)
     }

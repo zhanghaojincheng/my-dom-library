@@ -6,7 +6,10 @@
 
 
         $('#btn').click(function() {
-            $('#box').animate('left',200,2)
+            $('#box').animate({
+                start: 100,
+                alter: 10
+            })
         })
 
 
