@@ -270,11 +270,23 @@ Base.prototype.animate = function(obj) {
     clearInterval(window.timer)
     for(var i = 0;i<this.elements.length;i++) {
         var element = this.elements[i];
+        // 来个起始位置，为了点击一遍再点击的时候能重现动画，这个需要加start参数
         element.style[obj.attr] = obj.start + 'px';
-        var attr = obj.attr != undefined ? obj.attr == 'x' ? 'left' : obj.attr == 'y' ? 'top' :'left' : 'left'
+
+        var attr = obj.attr != undefined ? obj.attr == 'x' ? 'left' : obj.attr == 'y' ? 'top' : obj.attr == 'w' ? 'width' : obj.attr == 'h' ? 'height' : 'left' : 'left'
+
         var start = obj.start != undefined ? obj.start : getStyle(element, attr);
         var step = obj.step != undefined ? obj.step : 5;
-        var target = obj.alter + start;
+        var speed = obj.speed != undefined ? obj.speed : 10;
+        var type = obj.type == 0 ? 'constant' : obj.type == 1 ? 'buffer' : 'buffer';
+        // start等于刚开始的位置
+        var target = obj.target;
+        if(obj.alter != undefined && obj.target == undefined) {
+            target = obj.alter + start
+        } else if (obj.alter == undefined && obj.target == undefined) {
+            throw new Error('alter增量或者target目标量必须有一个!!!');
+        }
+        var target = obj.target != undefined ? obj.target : obj.alter != undefined ?  obj.alter + start : 0
 
         element.style[attr] = start + 'px';
         if(getStyle(element,attr) > target) {
@@ -282,18 +294,20 @@ Base.prototype.animate = function(obj) {
         }
 
         timer = setInterval(function() {
+            if(type == 'buffer') {
+                    step = step > 0 ? Math.ceil((target - getStyle(element, attr)) / speed) : Math.floor((target - getStyle(element, attr)) / speed)
+            }
             element.style[attr] = getStyle(element, attr) + step + 'px';
             if(step < 0 && getStyle(element, attr) + step < target ){
-                console.log(getStyle(element, attr))
-                element.style[attr] = target + 'px';
-                clearInterval(timer)
+                setTarget()
             } else if(step > 0 && getStyle(element, attr) + step > target ){
-                console.log(getStyle(element, attr))
-                element.style[attr] = target + 'px';
-                clearInterval(timer)
+                setTarget()
             }
-            console.log(getStyle(element, attr))
         },50)
+        function setTarget() {
+            element.style[attr] = target + 'px';
+            clearInterval(timer)
+        }
     }
     return this
 }

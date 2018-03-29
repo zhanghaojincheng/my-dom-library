@@ -3,11 +3,11 @@ body{
     padding:0;
 }
 #box{
-    width:50px;
+    width:100px;
     height:50px;
     position:absolute;
     background: red;
-    left:100px;
+    left:500px;
 }
 #btn{
     position:absolute;
