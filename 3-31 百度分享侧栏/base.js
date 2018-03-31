@@ -277,7 +277,7 @@ Base.prototype.animate = function(obj) {
             attr == 'opacity' ? parseFloat(getStyle(element, attr)) * 100 : parseInt(getStyle(element, attr));
 
         var step = obj.step != undefined ? obj.step : 5;
-        var speed = obj.speed != undefined ? obj.speed : 10;
+        var speed = obj.speed != undefined ? obj.speed : 5;
         var type = obj.type == 0 ? 'constant' : obj.type == 1 ? 'buffer' : 'buffer';
         // start等于刚开始的位置
         var target = obj.target != undefined ? obj.target : 0;
