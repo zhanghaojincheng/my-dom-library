@@ -69,26 +69,25 @@ $(function () {
         })
     })
 
-$(document).click(function() {
-    $('#test').animate({
-        attr: 'w',
-        target: 250
-    }).animate({
-        attr: 'o',
-        target: 25
+    $(document).click(function () {
+        $('#test').animate({
+            mul: {
+                width: 300,
+                o: 20
+            }
+        })
     })
-})
-$('.test').hover(function() {
-    $(this).animate({
-        attr: 'w',
-        target: 250
+    $('.test').hover(function () {
+        $(this).animate({
+           attr: 'w',
+            target: 500
+        })
+    }, function () {
+        $(this).animate({
+            attr: 'w',
+            target: 100
+        })
     })
-},function() {
-    $(this).animate({
-        attr: 'w',
-        target: 100
-    })
-})
 
 })
 
