@@ -8,9 +8,12 @@ body{
 .member_ul{
     margin:0;
     padding:0;
+    height:0;
+    overflow: hidden;
     border: 1px solid #999;
     border-top:none;
     display: none;
+    opacity:0;
 }
 .member_ul li{
     list-style: none;

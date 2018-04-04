@@ -303,7 +303,7 @@ Base.prototype.animate = function (obj) {
 
         clearInterval(element.timer);
         element.timer = setInterval(function () {
-            var flag = false;
+            var flag = true;
             for (var i in mul) {
                 attr = i == 'x' ? 'left' : i == 'y' ? 'top' : i == 'w' ? 'width' : i == 'h' ? 'height' : i == 'o' ? 'opacity' : i != undefined ? i : 'left';
                 target = mul[i];
@@ -323,11 +323,9 @@ Base.prototype.animate = function (obj) {
                     } else {
                         element.style[attr] = (temp + step) / 100
                     }
-                    // if(temp == target) {
-                    //     flag = true
-                    // } else {
-                    //     flag = false
-                    // }
+                    if(temp != target) {
+                        flag = false
+                    }
                 } else {
                     if (step == 0) {
                         setTarget()
@@ -338,12 +336,11 @@ Base.prototype.animate = function (obj) {
                     } else {
                         element.style[attr] = parseInt(getStyle(element, attr)) + step + 'px';
                     }
-                    if(target == parseInt(getStyle(element, attr))){
-                        flag = true
-                    } else {
+                    if(target != parseInt(getStyle(element, attr))){
                         flag = false
                     }
                 }
+                console.log(flag)
             }
             if(flag == true) {
                 clearInterval(element.timer)

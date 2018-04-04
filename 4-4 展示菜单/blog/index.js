@@ -4,16 +4,18 @@ $(function () {
     $('.member').hover(function () {
         $(this).css('background', 'url(../image/bottom.png)no-repeat right center')
         $('.member_ul').show().animate({
-            attr: 'o',
-            target: 100,
-            step: 10
+          mul: {
+              o: 100,
+              height: 140
+          }
         })
     }, function () {
         $(this).css('background', 'url(../image/top.png)no-repeat right center')
         $('.member_ul').animate({
-            attr: 'o',
-            target: 0,
-            step: 10,
+            mul: {
+              o: '0',
+              height:0,
+            },
             fn: function () {
                 $('.member_ul').hide()
             }
@@ -63,7 +65,7 @@ $(function () {
     addEvent(window, 'scroll', function () {
         $('#share').animate({
             attr: 'y',
-            target: getScrollTop().top + (getInner().height - parseInt(getStyle($('#share').first(), 'height'))) / 2,
+            target: parseInt(getScrollTop().top + (getInner().height - parseInt(getStyle($('#share').first(), 'height'))) / 2),
             step: 50,
 
         })
@@ -72,8 +74,9 @@ $(function () {
     $(document).click(function () {
         $('#test').animate({
             mul: {
+                height: 1000,
                 width: 200,
-                left: 1000,
+                o: 20
             }
         })
     })
