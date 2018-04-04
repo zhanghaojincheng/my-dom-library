@@ -303,10 +303,10 @@ Base.prototype.animate = function (obj) {
 
         clearInterval(element.timer);
         element.timer = setInterval(function () {
+            var flag = false;
             for (var i in mul) {
                 attr = i == 'x' ? 'left' : i == 'y' ? 'top' : i == 'w' ? 'width' : i == 'h' ? 'height' : i == 'o' ? 'opacity' : i != undefined ? i : 'left';
                 target = mul[i];
-                window.timer = element.timer;
                 if (type == 'buffer') {
                     step = attr == 'opacity' ? (target - parseFloat(getStyle(element, attr)) * 100) / speed : (target - parseInt(getStyle(element, attr))) / speed
                     step = step > 0 ? Math.ceil(step) : Math.floor(step);
@@ -323,6 +323,11 @@ Base.prototype.animate = function (obj) {
                     } else {
                         element.style[attr] = (temp + step) / 100
                     }
+                    // if(temp == target) {
+                    //     flag = true
+                    // } else {
+                    //     flag = false
+                    // }
                 } else {
                     if (step == 0) {
                         setTarget()
@@ -333,6 +338,17 @@ Base.prototype.animate = function (obj) {
                     } else {
                         element.style[attr] = parseInt(getStyle(element, attr)) + step + 'px';
                     }
+                    if(target == parseInt(getStyle(element, attr))){
+                        flag = true
+                    } else {
+                        flag = false
+                    }
+                }
+            }
+            if(flag == true) {
+                clearInterval(element.timer)
+                if (obj.fn != undefined) {
+                    obj.fn()
                 }
             }
         }, 50)
@@ -344,10 +360,7 @@ Base.prototype.animate = function (obj) {
                 element.style[attr] = target + 'px';
             }
 
-            clearInterval(element.timer)
-            if (obj.fn != undefined) {
-                obj.fn()
-            }
+
         }
     }
     return this
