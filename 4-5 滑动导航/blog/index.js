@@ -71,17 +71,29 @@ $(function () {
         })
     })
 
-   $('#nav ul li').hover(function() {
+   $('#nav .about li').hover(function() {
        var left = $(this).first().offsetLeft;
         $('.nav_bg').animate({
             attr: 'x',
-            target: left + 20
+            target: left + 20,
+            fn: function() {
+                $('#nav .white').animate({
+                    attr: 'x',
+                    target: -left
+                })
+            }
         })
     },function() {
-
+       var left = $(this).first().offsetLeft;
        $('.nav_bg').animate({
            attr: 'x',
-           target:20
+           target:20,
+           fn: function() {
+               $('#nav .white').animate({
+                   attr: 'x',
+                   target: 0
+               })
+           }
        })
     })
 

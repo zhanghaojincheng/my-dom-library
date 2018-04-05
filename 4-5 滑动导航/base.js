@@ -310,6 +310,7 @@ Base.prototype.animate = function (obj) {
                 if (type == 'buffer') {
                     step = attr == 'opacity' ? (target - parseFloat(getStyle(element, attr)) * 100) / speed : (target - parseInt(getStyle(element, attr))) / speed
                     step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    console.log(step)
                 }
 
                 if (attr == 'opacity') {
@@ -340,8 +341,8 @@ Base.prototype.animate = function (obj) {
                         flag = false
                     }
                 }
-                console.log(flag)
             }
+            // console.log(step)
             if(flag == true) {
                 clearInterval(element.timer)
                 if (obj.fn != undefined) {

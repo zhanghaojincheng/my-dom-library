@@ -249,12 +249,13 @@ body{
     position:absolute;
     left:20px;
     top:0px;
-    overflow:hidden;
     z-index:2;
+    overflow: hidden;
 }
 #nav .white{
+    position:absolute;
     width:425px;
-    color:white;
+    color:#fff;
     /*z-index:3;*/
 }
 /*最上层 保证鼠标移入移出动作正常触发*/
