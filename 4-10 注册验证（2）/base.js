@@ -15,7 +15,9 @@ function Base(tags) {
                 var elements = tags.split(' ');
                 var parentNode = undefined;
                 for (var i = 0; i < elements.length; i++) {
-                    // p
+                    if(!elements[i]){
+                        continue
+                    }
                     switch (elements[i].charAt(0)) {
                         case '#':
                             this.elements.push(this.getId(elements[i].substring(1)))
@@ -32,10 +34,10 @@ function Base(tags) {
                                 }
                                 parentNode = childelements;
                             } else {
-                                childelements = this.getTagName(elements[i]);
+                                childelements = this.getClass(elements[i].substring(1));
+                                console.log(childelements)
                                 parentNode = childelements;
                             }
-                            // this.elements = this.getClass(elements[i].substring(1))
                             break;
                         default:
                             var childelements = [];
@@ -86,7 +88,7 @@ Base.prototype.getClass = function (className, parentNode) {
     }
     var classes = parentNode.getElementsByClassName(className);
     for (var i = 0; i < classes.length; i++) {
-        temps.push(classes[i]);
+            temps.push(classes[i]);
     }
     return temps
 }
@@ -97,7 +99,7 @@ Base.prototype.getTagName = function (tagName, parentNode) {
     }
     var tags = parentNode.getElementsByTagName(tagName);
     for (var i = 0; i < tags.length; i++) {
-        temps.push(tags[i]);
+        temps.push(tags[i])
     }
     return temps
 }
@@ -215,7 +217,21 @@ Base.prototype.html = function (html) {
     }
     return this
 }
-
+// form表单内的元素查找
+Base.prototype.form = function (name) {
+    for (var i = 0; i < this.elements.length; i++) {
+        this.elements[i] = this.elements[i][name]
+    }
+    return this
+}
+// form表单内的val值的获取
+Base.prototype.val = function (str) {
+    for (var i = 0; i < this.elements.length; i++) {
+        if(!str) return this.elements[i].value
+        this.elements[i].value = str
+    }
+}
+// 点击事件
 Base.prototype.click = function (fn) {
     for (var i = 0; i < this.elements.length; i++) {
         this.elements[i].onclick = fn;

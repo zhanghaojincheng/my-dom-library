@@ -1,6 +1,5 @@
 $().extend('drag',function(tags) {
     const args = arguments;
-    console.log(args)
     for(var i = 0;i<this.elements.length; i++) {
         addEvent(this.elements[i],'mousedown',function(e) {
 
