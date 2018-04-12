@@ -150,7 +150,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../test" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunDashboard">
@@ -182,12 +182,12 @@
       <workItem from="1523277512132" duration="618000" />
       <workItem from="1523278672605" duration="5760000" />
       <workItem from="1523284769736" duration="5703000" />
-      <workItem from="1523451350231" duration="5328000" />
+      <workItem from="1523451350231" duration="5935000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22747000" />
+    <option name="totallyTimeSpent" value="23354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="621" y="31" width="947" height="629" extended-state="0" />
