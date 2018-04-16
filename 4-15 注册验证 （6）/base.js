@@ -216,6 +216,18 @@ Base.prototype.html = function (html) {
     }
     return this
 }
+// 设置获取innerText
+Base.prototype.text = function (str) {
+    for (var i = 0; i < this.elements.length; i++) {
+        console.log(arguments)
+        if (str) {
+            setInnerText(this.elements[i], str)
+        } else {
+            return getInnerText(this.elements[i])
+        }
+    }
+    return this
+}
 // form表单内的元素查找
 Base.prototype.form = function (name) {
 

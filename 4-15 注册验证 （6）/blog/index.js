@@ -262,14 +262,14 @@ $(function () {
             $(' form  .info_notpass').hide()
             $(' form .error_notpass').hide()
             $(' form .succ_notpass').hide()
-        } else if(trim($(this).val()) == trim($('form').form('pass').val())) {
-                $(' form  .info_notpass').hide()
-                $(' form .error_notpass').hide()
-                $(' form .succ_notpass').show()
+        } else if (trim($(this).val()) == trim($('form').form('pass').val())) {
+            $(' form  .info_notpass').hide()
+            $(' form .error_notpass').hide()
+            $(' form .succ_notpass').show()
         } else {
-                $(' form  .info_notpass').hide()
-                $(' form .error_notpass').show()
-                $(' form .succ_notpass').hide()
+            $(' form  .info_notpass').hide()
+            $(' form .error_notpass').show()
+            $(' form .succ_notpass').hide()
         }
     })
     // 回答
@@ -282,7 +282,7 @@ $(function () {
             $(' form  .info_ans').hide()
             $(' form .error_ans').hide()
             $(' form .succ_ans').hide()
-        } else if(trim($(this).val()).length >= 2 && trim($(this).val()).length <= 32 ) {
+        } else if (trim($(this).val()).length >= 2 && trim($(this).val()).length <= 32) {
             $(' form  .info_ans').hide()
             $(' form .error_ans').hide()
             $(' form .succ_ans').show()
@@ -295,19 +295,22 @@ $(function () {
     // 电子邮件
     $('form').form('email').bind('focus', function () {
         // 补全界面
-        $('form .all_email').show()
+        if ($(this).val().indexOf('@') != -1) {
+            $('form .all_email').hide()
+        } else {
+            $('form .all_email').show()
+        }
 
         $(' form  .info_email').show()
         $(' form .error_email').hide()
         $(' form .succ_email').hide()
     }).bind('blur', function () {
-       // $('form .all_email').hide()
+        $('form .all_email').hide()
         if (trim($(this).val()) == '') {
             $(' form  .info_email').hide()
             $(' form .error_email').hide()
             $(' form .succ_email').hide()
-        } else if(/^[\w\-\.]+@[\w\-]+(\.[a-zA-Z]{2,4}){1,2}$/.test(trim($(this).val()))) {
-                console.log(123123123123)
+        } else if (/^[\w\-\.]+@[\w\-]+(\.[a-zA-Z]{2,4}){1,2}$/.test(trim($(this).val()))) {
             $(' form  .info_email').hide()
             $(' form .error_email').hide()
             $(' form .succ_email').show()
@@ -316,14 +319,22 @@ $(function () {
             $(' form .error_email').show()
             $(' form .succ_email').hide()
         }
+
     })
-    $('form').form('email').bind('keyup',function() {
-        $('.all_email span').html($(this).val())
+    $('form').form('email').bind('keyup', function () {
+        if ($(this).val().indexOf('@') == -1) {
+            $('.all_email').show()
+            $('.all_email .add_email_info').html($(this).val())
+        } else {
+            $('.all_email').hide()
+        }
+
     })
-    // console.log($('.all_email li'))
-    $('.all_email li').click(function() {
-        console.log($(this).html())
+    $('.all_email li').bind('mousedown', function() {
+         $('form').form('email').val($(this).text())
     })
+
+
 })
 
 
