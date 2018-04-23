@@ -260,6 +260,16 @@ Base.prototype.val = function (str) {
         this.elements[i].value = str
     }
 }
+// 获取属性
+Base.prototype.attr = function (attr,val) {
+    for (var i = 0; i < this.elements.length; i++) {
+        if(arguments.length == 1) {
+            return this.elements[0].getAttribute(attr)
+        } else {
+            this.elements[0].setAttribute(attr,val)
+        }
+    }
+}
 // 点击事件
 Base.prototype.click = function (fn) {
     for (var i = 0; i < this.elements.length; i++) {

@@ -500,6 +500,26 @@ $(function () {
     $('.uull li').click(function() {
         console.log($(this).index())
     })
+    var offsetTop = getOffsetTop($('.lazyload').first())
+    document.onscroll = function() {
+        var clientHeight = $('html').first().clientHeight;
+        var scrollHeight = $('html').first().scrollHeight;
+        var scrollTop = getScrollTop().top
+        if(clientHeight + scrollTop > offsetTop) {
+            $('.lazyload').eq(0).attr('src',$('.lazyload').eq(0).attr('xsrc'))
+            $('.lazyload').eq(1).attr('src',$('.lazyload').eq(1).attr('xsrc'))
+            $('.lazyload').eq(2).attr('src',$('.lazyload').eq(2).attr('xsrc'))
+            $('.lazyload').eq(3).attr('src',$('.lazyload').eq(3).attr('xsrc'))
+            $('.lazyload').eq(4).attr('src',$('.lazyload').eq(4).attr('xsrc'))
+            $('.lazyload').eq(5).attr('src',$('.lazyload').eq(5).attr('xsrc'))
+
+        }
+    }
+
+    console.log(getInner().height)
+
+
+
 })
 
 

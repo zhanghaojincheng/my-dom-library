@@ -137,7 +137,16 @@ function deleteRule(sheet, index) {
 function getEvent(event) {
     return event || window.event
 }
-
+// 获取元素到顶点的位置
+function getOffsetTop(element) {
+    var offsetTop = element.offsetTop;
+    var parent = element.offsetParent;
+    while(parent != null) {
+        offsetTop += parent.offsetTop;
+        parent = parent.offsetParent;
+    }
+    return offsetTop
+}
 // 删除左右空格
 function trim(str) {
     return str.replace('/(^\s*)|(\s*$)/g', '');
