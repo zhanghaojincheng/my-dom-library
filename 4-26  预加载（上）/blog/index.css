@@ -1,0 +1,591 @@
+body{
+    margin:0;
+    padding:0;
+    font-size:16px;
+    color:#333;
+}
+ul,dl,dd,h2,p{
+    margin: 0;
+    padding: 0;
+}
+.member_ul{
+    height:0;
+    overflow: hidden;
+    border: 1px solid #999;
+    border-top:none;
+    display: none;
+    opacity:0;
+}
+.member_ul li{
+    list-style: none;
+    width:90px;
+    height:35px;
+    line-height:35px;
+    text-align: center;
+}
+.member_ul li a{
+    color:#333;
+    text-decoration:none;
+    display:block;
+}
+.member_ul li a:hover{
+    background: #fc0;
+}
+#header{
+    width:900px;
+    height:38px;
+    margin: 0 auto;
+    background: #eee;
+    position:relative;
+}
+#header .logo{
+    width:100px;
+    height:38px;
+    float:left;
+}
+#header .logo img{
+    display:block;
+}
+#header .member{
+    width:90px;
+    height:38px;
+    line-height:38px;
+    float:right;
+    background: url(../image/top.png)no-repeat right center;
+    cursor:pointer;
+}
+#header ul{
+    position:absolute;
+    top:38px;
+    right:0;
+}
+.login, .reg{
+    float:right;
+    width:38px;
+    height:38px;
+    cursor:pointer;
+    line-height:38px;
+}
+
+#login{
+    width:350px;
+    height:250px;
+    border:1px solid #ccc;
+    position:absolute;
+    display:none;
+    z-index:21;
+    background: #fff;
+}
+#login h2{
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    font-size:14px;
+    letter-spacing:1px;
+    color:#666;
+    margin:0;
+    padding:0;
+    background: #eee;
+    border-bottom:1px solid #ccc;
+    margin-bottom:20px;
+    cursor: move;
+}
+#login h2 .close{
+    position:absolute;
+    height:40px;
+    line-height:40px;
+    right:5px;
+    cursor:pointer;
+}
+#login div.user,#login div.pass{
+    font-size:14px;
+    color:#666;
+    padding:6px 0;
+    text-align:center;
+}
+#login input.text{
+    width:200px;
+    height:25px;
+    border:1px solid #ccc;
+    background: #fff;
+}
+#login input.submit{
+    display:block;
+    width:107px;
+    height:25px;
+    font-size:16px;
+    margin:20px auto;
+    border: none;
+    cursor: pointer;
+}
+#login .other{
+    font-size:14px;
+    float: right;
+    margin-right: 20px;
+    color: #666666;
+    cursor: pointer;
+}
+
+#reg{
+    width:600px;
+    height:550px;
+    border:1px solid #ccc;
+    position:absolute;
+    display:none;
+    z-index:21;
+    background: #fff;
+}
+#reg h2{
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    font-size:14px;
+    letter-spacing:1px;
+    color:#666;
+    margin:0;
+    padding:0;
+    background: #eee;
+    border-bottom:1px solid #ccc;
+    margin-bottom:20px;
+    cursor: move;
+}
+#reg h2 .close{
+    position:absolute;
+    height:40px;
+    line-height:40px;
+    right:5px;
+    cursor:pointer;
+}
+#reg dl{
+    color:#666;
+    font-size:14px;
+    margin:20px;
+    position:relative;
+}
+#reg dl dd {
+    height:30px;
+    padding:5px 0;
+
+}
+#reg dl dd .head{
+    display: inline-block;
+    width:80px;
+}
+#reg dl dd span.info, #reg dl dd span.error, #reg dl dd span.succ{
+    display:block;
+    width:165px;
+    height:32px;
+    line-height: 15px;
+    color:#333;
+    font-size:12px;
+    border:1px solid #cecece;
+    padding:0 0 0 25px;
+    background-size: 15px 15px;
+    position:absolute;
+    display:none;
+}
+#reg dl dd span.info{
+    background:url("../image/right.png")no-repeat;
+    background-size: 15px 15px;
+}
+
+#reg dl dd span.error{
+    background:url("../image/false.png")no-repeat;
+    background-size: 25px;
+    line-height: 30px;
+}
+#reg dl dd span.succ{
+    height:14px;
+    line-height: 14px;
+    background:url("../image/right.png")no-repeat;
+    background-size: 15px;
+    color:green;
+    top:3px;
+    left:295px;
+}
+#reg dl dd span.info_user{
+    top:3px;
+    left:295px;
+    height:43px;
+    line-height: 18px;
+    padding-top:7px;
+}
+#reg dl dd span.error_user{
+    top:3px;
+    left:295px;
+}
+#reg dl dd span.succ_user{
+    top:12px;
+    left:295px;
+}
+#reg dl dd span.info_pass{
+    width: 240px;
+    height:106px;
+    background:#fff;
+    border:1px solid #cecece;
+    top:5px;
+    left:295px;
+}
+#reg dl dd span.info_pass p{
+    height:25px;
+    line-height: 25px;
+    color:#666;
+}
+#reg dl dd span.info_pass p strong{
+    color:#ccc;
+    font-size:20px;
+}
+#reg dl dd span.error_pass{
+    top:43px;
+    left:295px;
+}
+#reg dl dd span.succ_pass{
+    top:52px;
+    left:295px;
+}
+#reg dl dd span.info_notpass{
+    top:83px;
+    left:295px;
+}
+#reg dl dd span.error_notpass{
+    top:83px;
+    left:295px;
+}
+#reg dl dd span.succ_notpass{
+    top:92px;
+    left:295px;
+}
+#reg dl dd span.info_ans{
+    top:163px;
+    left:295px;
+}
+#reg dl dd span.error_ans{
+    top:163px;
+    left:295px;
+}
+#reg dl dd span.succ_ans{
+    top:172px;
+    left:295px;
+}
+#reg dl dd span.info_email{
+    top:203px;
+    left:295px;
+}
+#reg dl dd span.error_email{
+    top:203px;
+    left:295px;
+}
+#reg dl dd span.succ_email{
+    top:212px;
+    left:295px;
+}
+#reg dl dd span.error_question{
+    top:120px;
+    left:295px;
+}
+#reg dl dd span.error_day{
+    top:242px;
+    left:365px;
+}
+ /*邮件输入提醒*/
+#reg dl dd ul.all_email{
+    padding:5px 10px;
+    width:180px;
+    height:130px;
+    background: #fff;
+    position:absolute;
+    top:233px;
+    left:84px;
+    border:1px solid #ccc;
+    display:none;
+}
+#reg dl dd ul.all_email li {
+    height:25px;
+    line-height: 25px;
+    border-bottom:1px solid #e5edf2;
+    padding:0 5px;
+    cursor: pointer;
+}
+#reg dl dd ul.all_email li:hover{
+    background: #ddd;
+}
+#reg dl dd input.text, #reg dl dd select {
+    width:200px;
+    height:25px;
+    border:1px solid #ccc;
+    background: #fff;
+    color:#999;
+}
+#reg dl dd.birthday select{
+    width:80px;
+}
+#reg dl dd textarea{
+    width:360px;
+    height:100px;
+    background: #fff;
+    border:1px solid #ccc;
+}
+#reg dl dd input.submit{
+    width:143px;
+    height:33px;
+    border:none;
+    cursor:pointer;
+    margin-left:80px;
+}
+#reg dl dd.ps{
+    padding:0 0 0 320px;
+    height:20px;
+    line-height: 20px;
+    display:none;
+}
+#reg dl dd.ps .clear{
+    font-weight:600;
+    color:dodgerblue;
+    padding:0 5px;
+    cursor:pointer;
+}
+#reg dl dd.ps .num {
+    padding:0 3px;
+}
+#screen{
+    position:absolute;
+    left:0;
+    top:0;
+    display:none;
+    background:#888;
+    z-index:20;
+    opacity:0;
+    filter:alpha(opacity:30);
+}
+
+#main{
+    width:900px;
+    margin: 50px auto;
+}
+#sidebar{
+    width:250px;
+    height: 550px;
+    background: #eee;
+    float:left;
+}
+#sidebar h2 {
+    width:248px;
+    height:30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-indent:10px;
+    border:1px solid #ccc;
+    border-bottom:none;
+    margin: 0;
+}
+#sidebar ul {
+    height:150px;
+    border:1px solid #ccc;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+#sidebar ul li {
+    height:30px;
+    line-height: 30px;
+    background: #ddd;
+    list-style: none;
+}
+#sidebar ul li a{
+    text-decoration: none;
+    color:#333;
+}
+#index{
+    width:630px;
+    height:500px;
+    background: #eee;
+    float:right;
+}
+
+#photo{
+    width:900px;
+    float:left;
+}
+#photo dl{
+    width:225px;
+    height:270px;
+    float:left;
+    margin:5px 0 15px 0;
+}
+#photo dl dt {
+    width: 200px;
+    height: 250px;
+    background: #eee;
+    margin: 0 auto;
+}
+#photo dl dd{
+    height:25px;
+    line-height: 25px;
+    text-align: center;
+}
+#share{
+    width:210px;
+    height:315px;
+    border:1px solid #ccc;
+    position: absolute;
+    top:0px;
+    left:-210px;
+    background: #fff;
+    z-index: 2;
+}
+#share h2{
+    height:30px;
+    line-height: 30px;
+    padding:0;
+    background: #eee;
+    margin:0;
+    font-size: 14px;
+    color:#666;
+    text-indent: 10px;
+}
+#share ul {
+    height:254px;
+    padding:3px 0 2px 5px;
+    position:relative;
+}
+#share ul li {
+    width:96px;
+    height:28px;
+    float:left;
+    padding:2px;
+    list-style: none;
+}
+#share ul li a{
+    display: block;
+    width:95px;
+    height:26px;
+    line-height: 26px;
+    text-decoration: none;
+    color:#666;
+    text-indent:30px;
+}
+
+#share .share_footer{
+    height:26px;
+    text-align: right;
+    background: #eee;
+}
+#share .share_footer a{
+    padding: 0 13px;
+    text-decoration: none;
+    color:#666;
+}
+#share .share_footer a:hover{
+    color:#06f;
+    opacity:.5;
+}
+#share .share_footer .span{
+    display:flex;
+    align-items: center;
+    text-align: center;
+    border-radius:5px;
+    width:24px;
+    height:88px;
+    line-height:22px;
+    background: orangered;
+    color:#fff;
+    cursor:pointer;
+    position:absolute;
+    top:131px;
+    left:210px;
+}
+
+
+#nav{
+    width:465px;
+    height:52px;
+    background: #eee;
+    border-radius:10px;
+    margin: 50px auto 0 auto;
+    position:relative;
+}
+#nav ul{
+    position:absolute;
+}
+#nav ul.black {
+    left:20px;
+    color:#333;
+    z-index:1;
+}
+#nav ul li {
+    list-style: none;
+    width:85px;
+    height:52px;
+    line-height: 52px;
+    float:left;
+    text-align: center;
+    font-weight:bold;
+}
+#nav .nav_bg{
+    display:block;
+    width:85px;
+    height:52px;
+    border-radius: 10px;
+    background: lightseagreen;
+    position:absolute;
+    left:20px;
+    top:0px;
+    z-index:2;
+    overflow: hidden;
+}
+#nav .white{
+    position:absolute;
+    width:425px;
+    color:#fff;
+    /*z-index:3;*/
+}
+/*最上层 保证鼠标移入移出动作正常触发*/
+#nav .about{
+    width:425px;
+    height:52px;
+    position:absolute;
+    top:0;
+    left:20px;
+    z-index:4;
+}
+
+.lazyload{
+    cursor:pointer;
+
+}
+#photo_big{
+    width:620px;
+    height:511px;
+    border:1px solid #ccc;
+    position:absolute;
+    top:100px;
+    left:200px;
+    display:none;
+    z-index:21;
+    background: #fff;
+}
+#photo_big h2{
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    font-size:14px;
+    letter-spacing:1px;
+    color:#666;
+    margin:0;
+    padding:0;
+    background: #eee;
+    border-bottom:1px solid #ccc;
+    margin-bottom:20px;
+    cursor: move;
+}
+#photo_big h2 img{
+    /*width:100%;*/
+    /*height:100%;*/
+}
+#photo_big h2 .close{
+    position:absolute;
+    height:40px;
+    line-height:40px;
+    right:5px;
+    cursor:pointer;
+}
+
