@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="511" column="13" lean-forward="true" selection-start-line="511" selection-start-column="13" selection-end-line="511" selection-end-column="13" />
+            <state relative-caret-position="19">
+              <caret line="503" column="19" lean-forward="true" selection-start-line="503" selection-start-column="19" selection-end-line="503" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -68,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base_drag.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base_drag.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/base_drag.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="50" column="47" lean-forward="true" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
+            <state relative-caret-position="180">
+              <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -121,8 +121,8 @@
         <option value="$PROJECT_DIR$/blog/index.css" />
         <option value="$PROJECT_DIR$/blog/index.html" />
         <option value="$PROJECT_DIR$/base.js" />
-        <option value="$PROJECT_DIR$/base_drag.js" />
         <option value="$PROJECT_DIR$/blog/index.js" />
+        <option value="$PROJECT_DIR$/base_drag.js" />
       </list>
     </option>
   </component>
@@ -170,7 +170,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ES6" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunDashboard">
@@ -208,12 +208,12 @@
       <workItem from="1524401570620" duration="2289000" />
       <workItem from="1524405668214" duration="9320000" />
       <workItem from="1524658737622" duration="6580000" />
-      <workItem from="1524743994128" duration="6081000" />
+      <workItem from="1524743994128" duration="6261000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56054000" />
+    <option name="totallyTimeSpent" value="56234000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="474" y="39" width="859" height="665" extended-state="0" />
@@ -615,14 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/base_drag.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="50" column="47" lean-forward="true" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
@@ -641,8 +633,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="511" column="13" lean-forward="true" selection-start-line="511" selection-start-column="13" selection-end-line="511" selection-end-column="13" />
+        <state relative-caret-position="19">
+          <caret line="503" column="19" lean-forward="true" selection-start-line="503" selection-start-column="19" selection-end-line="503" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base_drag.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
           <folding />
         </state>
       </provider>

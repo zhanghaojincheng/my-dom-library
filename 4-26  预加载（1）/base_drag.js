@@ -6,8 +6,6 @@ $().extend('drag',function(tags) {
                 e.preventDefault();
             }
             var _this = this;
-            console.log(e.clientX);
-            console.log(_this.offsetLeft)
             var diffX = e.clientX - _this.offsetLeft;
             var diffY = e.clientY - _this.offsetTop;
             var flag = false;
