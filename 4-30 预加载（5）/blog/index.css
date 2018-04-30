@@ -560,9 +560,10 @@ ul,dl,dd,h2,p{
     position:absolute;
     top:100px;
     left:200px;
-    /*display:none;*/
+    display:none;
     z-index:21;
     background: #fff;
+    background: #666;
 }
 #photo_big h2{
     height:40px;

@@ -549,7 +549,7 @@ $(function () {
             target: 100,
             step: 10
         }).css('opacity', '0');
-        $('.page-index').html($(this.parentNode.parentNode).index() + '/' + $('.lazyload').length())
+        $('.page-index').html($(this.parentNode.parentNode).index() + 1 + '/' + $('.lazyload').length())
         photo_big.show();
         containNextImgSrc(this);
     })
@@ -582,19 +582,33 @@ $(function () {
     var prev_img = new Image();
     var next_img = new Image();
     $('.sl').click(function () {
+        console.log(prev_img.index)
+        $('.page-index').html(prev_img.index + 1 + '/' + $('.lazyload').length())
         showImg(prev_img);
     });
     $('.sr').click(function () {
+        $('.page-index').html(next_img.index + 1 + '/' + $('.lazyload').length())
         showImg(next_img)
     });
 
     function showImg(betweenImg) {
-        $('#photo_big .image-box .img').attr('src', betweenImg.src).animate({
+        var currentImg = new Image();
+        currentImg.src = betweenImg.src;
+        $('#photo_big .image-box .img').attr('src', '../image/load.gif').animate({
             attr: 'o',
             target: 100,
             step: 10
         }).css('opacity', '0')
-        containNextImgSrc($('.lazyload').eq(betweenImg.index).first())
+        $(currentImg).bind('load', function() {
+            $('#photo_big .image-box .img').attr('src', currentImg.src).animate({
+                attr: 'o',
+                target: 100,
+                step: 10
+            }).css('opacity', '0')
+            containNextImgSrc($('.lazyload').eq(betweenImg.index).first())
+        })
+
+
     }
 
     // $('body').click(function() {
