@@ -513,7 +513,8 @@ $(function () {
     var lazyload = $('.lazyload');
     var clientHeight = $('html').first().clientHeight;
     $(window).bind('scroll', _wait_load);
-    $(window).bind('resize',_wait_load);
+    $(window).bind('resize', _wait_load);
+
     function _wait_load() {
         setTimeout(function () {
             for (var i = 0; i < lazyload.length(); i++) {
@@ -539,18 +540,20 @@ $(function () {
         photo_big.center(620, 511);
         screen.lock().animate({
             attr: 'o',
-            target: 30,
+            target: 30
         });
         var temp_img = new Image();
-        temp_img.src=$(this).attr('src');
-        $('#photo_big .image-box .img').attr('src',temp_img.src).animate({
+        temp_img.src = $(this).attr('src');
+        $('#photo_big .image-box .img').attr('src', temp_img.src).animate({
             attr: 'o',
             target: 100,
-            step:10
-        }).css('opacity','0')
+            step: 10
+        }).css('opacity', '0');
+        $('.page-index').html($(this.parentNode.parentNode).index() + '/' + $('.lazyload').length())
         photo_big.show();
         containNextImgSrc(this);
     })
+
     function containNextImgSrc(_this) {
         var parent = _this.parentNode.parentNode;
         var prev = prevIndex($(parent).index(), parent.parentNode);
@@ -560,9 +563,10 @@ $(function () {
         next_img.src = $('.lazyload').eq(next).attr('xsrc');
         next_img.index = next;
     }
+
     $('#photo_big .close').click(function () {
         photo_big.hide()
-        $('#photo_big .image-box .img').attr('src','../image/load.gif')
+        $('#photo_big .image-box .img').attr('src', '../image/load.gif')
         screen.animate({
             attr: 'o',
             target: 0,
@@ -577,19 +581,32 @@ $(function () {
 // 点击左右切换图片
     var prev_img = new Image();
     var next_img = new Image();
-    $('.sl').click(function() {
+    $('.sl').click(function () {
         showImg(prev_img);
     });
-    $('.sr').click(function() {
-       showImg(next_img)
+    $('.sr').click(function () {
+        showImg(next_img)
     });
 
     function showImg(betweenImg) {
-        $('#photo_big .image-box .img').attr('src',betweenImg.src).animate({
+        $('#photo_big .image-box .img').attr('src', betweenImg.src).animate({
             attr: 'o',
             target: 100,
-            step:10
-        }).css('opacity','0')
+            step: 10
+        }).css('opacity', '0')
         containNextImgSrc($('.lazyload').eq(betweenImg.index).first())
     }
+
+    // $('body').click(function() {
+    //     alert(999)
+    // })
+    // $('#maopao .outer').click(function(e) {
+    //     alert(123);
+    // })
+    //
+    // $('#maopao .inner').click(function(e) {
+    //     alert(456)
+    // })
+
+
 })
