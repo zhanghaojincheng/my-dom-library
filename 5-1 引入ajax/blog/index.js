@@ -610,6 +610,16 @@ $(function () {
     }
 })
 
+$(document).click(function() {
+    ajax({
+        method: 'get',
+        url: 'text.php',
+        async: true,
+        success: function(res) {
+            console.log(res)
+        }
+    })
+})
 
 
 
